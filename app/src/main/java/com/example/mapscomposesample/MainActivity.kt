@@ -9,6 +9,8 @@ import androidx.compose.ui.Modifier
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 
 class MainActivity : ComponentActivity() {
@@ -30,5 +32,12 @@ fun MapContent() {
     GoogleMap(
         modifier = Modifier.fillMaxSize(),
         cameraPositionState = cameraPositionState,
-    )
+    ) {
+        Prefecture.values().forEach {
+            Marker(
+                state = MarkerState(LatLng(it.latitude, it.longitude)),
+                title = it.name,
+            )
+        }
+    }
 }
