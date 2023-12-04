@@ -61,8 +61,9 @@ fun MapContent() {
         }
 
         val renderer = rememberClusterRenderer(
-            // クラスタリング時の見た目を指定可能。今回はnullにしてデフォルトにする
+            // クラスタリング時の見た目を指定可能。null指定でデフォルトとなる
             clusterContent = null,
+            // MarkerComposableのContentをそのまま実装する
             clusterItemContent = { clusterItem ->
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
